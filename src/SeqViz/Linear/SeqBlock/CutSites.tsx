@@ -158,7 +158,7 @@ const CutSites = (props: {
             ) : null}
 
             {/* label above seq */}
-            {sequenceCutSite && (
+            {sequenceCutSite && zoom > 10 && (
               <text
                 className="la-vz-cut-site-text"
                 dominantBaseline="hanging"
