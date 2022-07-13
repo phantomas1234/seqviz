@@ -42,7 +42,7 @@ export default class Index extends React.PureComponent<IndexProps> {
         tickInc = 20;
         break;
       case zoom.linear >= 0:
-        tickInc = 50;
+        tickInc = Math.round((seq.length / 2) / 100) * 100;
         break;
       default:
         tickInc = 10;
