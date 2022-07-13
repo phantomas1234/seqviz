@@ -65,13 +65,12 @@ See: https://github.com/Lattice-Automation/seqviz#optionsstyle-`);
     zoom = Math.min(zoom, 100);
 
     const seqFontSize = Math.min(Math.round(zoom * 0.1 + 9.5), 18); // max 18px
-
     // otherwise the sequence needs to be cut into smaller subsequences
     // a sliding scale in width related to the degree of zoom currently active
     let bpsPerBlock = Math.round((size.width / seqFontSize) * 1.4) || 1; // width / 1 * seqFontSize
-
+    
     if (zoom <= 5) {
-      bpsPerBlock *= 3;
+      bpsPerBlock = seq.length / 3; // or maybe bpsPerBlock = seq.length; for just on long streach
     } else if (zoom <= 10) {
       // really ramp up the range, since at this zoom it'll just be a line
       bpsPerBlock *= 2;
@@ -88,7 +87,7 @@ See: https://github.com/Lattice-Automation/seqviz#optionsstyle-`);
 
     const lineHeight = 1.4 * seqFontSize; // aspect ratio is 1.4 for roboto mono
     const elementHeight = 16; // the height, in pixels, of annotations, ORFs, etc
-
+    
     return {
       Circular: false,
       Linear: true,
